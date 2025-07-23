@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Asia Cotton is a leading textile exporter from Karur, India. Explore our premium fabrics and home furnishing products.">
     <title>ASIA COTTON | Premium Home Textiles Since 1997</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="data:,">
@@ -436,53 +435,73 @@
         }
         
         /* Footer - Made more compact */
-        footer {
-            background-color: #425260;
-            color: white;
-            padding: var(--space-md) 5%;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
-            text-align: center;
-        }
-        
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            gap: var(--space-xs);
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: var(--space-sm);
-            position: relative;
-            padding-bottom: var(--space-xs);
-            text-align: center;
-        }
-        
-        .footer-column h3::after {
+     /* Footer */
+footer {
+    background-color: #425260;
+    color: white;
+    padding: var(--space-md) 5%;
+    text-align: center; /* Keep overall footer centered */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    text-align: center; /* Default center alignment */
+}
+
+/* First column (address) specific styles */
+.footer-column:first-child {
+    text-align: left; /* Left align only the first column */
+    align-items: flex-start; /* Align items to the start (left) */
+}
+
+.footer-column:first-child h3::after {
+    left: 0; /* Underline starts from left */
+    transform: none; /* Remove centering transform */
+}
+
+/* General column styles */
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center other columns */
+    gap: var(--space-xs);
+}
+
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+    position: relative;
+    padding-bottom: var(--space-xs);
+    text-align: inherit; /* Inherits from parent */
+}
+
+.footer-column h3::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%;           /* Start from center */
-    transform: translateX(-50%); /* Shift back half the width */
-    width: 40px;         /* Keep underline width */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
     height: 2px;
     background-color: var(--accent);
 }
-        
-        .footer-column p, .footer-column a {
-            color: var(--light-gray);
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
+
+.footer-column p, .footer-column a {
+    color: var(--light-gray);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    text-align: inherit; /* Inherits from parent */
+}
+
+/* Add some padding between lines in the address */
+.footer-column:first-child p {
+    padding: 0.1rem 0;
+    text-align: left; /* Ensure text alignment is left */
+}
         
         .footer-column a {
             text-decoration: none;
@@ -637,7 +656,7 @@
                         <i class="fas fa-industry"></i>
                     </div>
                     <h3>Our Factory</h3>
-                    <p>Our 50,000 sq ft state-of-the-art facility combines advanced technology with skilled craftsmanship to produce premium textiles that meet international standards.</p>
+                    <p>Our 1,00,000 sq ft state-of-the-art facility combines advanced technology with skilled craftsmanship to produce premium textiles that meet international standards.</p>
                 </div>
                 
                 <div class="highlight-card">
@@ -666,7 +685,7 @@
                         <p>Skilled Artisans</p>
                     </div>
                     <div class="stat-item">
-                        <h3>50K</h3>
+                        <h3>1Lakh</h3>
                         <p>Sq Ft Production Facility</p>
                     </div>
                 </div>
@@ -684,38 +703,45 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Delivering Excellence Since 1997</h3>
-                <p>9/236,237,NH-44, Kakkavadi pirivu,<br>Thalapatti village,Karur,TamilNadu-639003<br>India</p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>CONTACT US</h3>
-                <p>
-                    <a href="tel:+914324235518">+91 4324 235518</a><br>
-                    <a href="mailto:info@asiacotton.in">info@asiacotton.in</a><br>
-                    Mon-Fri: 9:00 AM – 5:00 PM
-                </p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>QUICK LINKS</h3>
-                <p>
-                    <a href="about.html">About Us</a><br>
-                    <a href="products.html">Our Products</a><br>
-                    <a href="sustainability.html">Sustainability</a><br>
-                    <a href="certifications.html">Certificcations</a><br>
-                    <a href="contact.html">Contact</a>
-                </p>
-            </div>
+   <!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Delivering Excellence Since 1997</h3>
+            <p>
+                9/236,237, NH-44,<br>
+                Kakkavadi pirivu,<br>
+                Thalapatti village,<br>
+                Karur, TamilNadu - 639003<br>
+                India
+            </p>
         </div>
         
-        <div class="footer-bottom">
-            <p>&copy; 2025 ASIA COTTON. All Rights Reserved.</p>
+        <div class="footer-column">
+            <h3>CONTACT US</h3>
+            <p>
+                <a href="tel:+914324235518">+91 4324 235518</a><br>
+                <a href="mailto:info@asiacotton.in">info@asiacotton.in</a><br>
+                Mon-Fri: 9:00 AM – 5:00 PM
+            </p>
         </div>
-    </footer>
+        
+        <div class="footer-column">
+            <h3>QUICK LINKS</h3>
+            <p>
+                <a href="about.html">About Us</a><br>
+                <a href="products.html">Our Products</a><br>
+                <a href="sustainability.html">Sustainability</a><br>
+                <a href="certifications.html">Certifications</a><br>
+                <a href="contact.html">Contact</a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 ASIA COTTON. All Rights Reserved.</p>
+    </div>
+</footer>
 
     <script>
         // Set active navigation link based on current page
