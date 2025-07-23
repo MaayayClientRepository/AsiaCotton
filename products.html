@@ -797,23 +797,23 @@
             <div class="products-grid">
                 <div class="product-card" data-product="duvet">
                     <div class="product-image" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('product-Imgaes/Bedding 1.jpg')"></div>
-                    <div class="product-name">sheeets</div>
+                    <div class="product-name">sheets</div>
                 </div>
                 <div class="product-card" data-product="sheet-sets">
                     <div class="product-image" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('product-Imgaes/Bedding 3.jpg')"></div>
-                    <div class="product-name">sheeets</div>
+                    <div class="product-name">sheets</div>
                 </div>
                 <div class="product-card" data-product="pillow-case">
                     <div class="product-image" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('product-Imgaes/Bedding 4.jpg')"></div>
-                    <div class="product-name">sheeets</div>
+                    <div class="product-name">sheets</div>
                 </div>
                 <div class="product-card" data-product="pillow-case">
                     <div class="product-image" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('product-Imgaes/Bedding 5.jpg')"></div>
-                    <div class="product-name">sheeets</div>
+                    <div class="product-name">sheets</div>
                 </div>
                 <div class="product-card" data-product="pillow-case">
                     <div class="product-image" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('product-Imgaes/Bedding 6.jpg')"></div>
-                    <div class="product-name">sheeets</div>
+                    <div class="product-name">sheets</div>
                 </div>
             </div>
         </div>
@@ -861,257 +861,166 @@
         
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const headerTitle = document.getElementById('headerTitle');
-            const headerDescription = document.getElementById('headerDescription');
-            const backToCategories = document.getElementById('backToCategories');
-            const backToProducts = document.getElementById('backToProducts');
-            const categoriesGrid = document.getElementById('categoriesGrid');
-            const allProductsContainers = document.querySelectorAll('.products-container');
-            const productDetail = document.getElementById('productDetail');
-            const detailTitle = document.getElementById('detailTitle');
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const closeModal = document.querySelector('.close-modal');
+    
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const headerTitle = document.getElementById('headerTitle');
+        const headerDescription = document.getElementById('headerDescription');
+        const backToCategories = document.getElementById('backToCategories');
+        const backToProducts = document.getElementById('backToProducts');
+        const categoriesGrid = document.getElementById('categoriesGrid');
+        const allProductsContainers = document.querySelectorAll('.products-container');
+        
+        let currentCategory = '';
+        
+        const productTitles = {
+            'table-cloth': 'Table Cloth',
+            'table-runner': 'Table Runner',
+            'kitchen-towels': 'Kitchen Towels',
+            'cotton-bags': 'Cotton Bags',
+            'duvet': 'Duvet Cover',
+            'sheet-sets': 'Sheet Sets',
+            'pillow-case': 'Pillow Case',
+            'cushions': 'Outdoor Cushions',
+            'swaddle': 'Swaddle Blanket',
+            'blanket': 'Nursery Blanket'
+        };
+
+        const categoryData = {
+            'dining': {
+                title: 'Dining Essentials',
+                description: 'Transform your dining experience with our artisanal table linens.'
+            },
+            'kitchen': {
+                title: 'Kitchen Textiles',
+                description: 'Practical yet beautiful kitchen essentials made from natural materials.'
+            },
+            'bedding': {
+                title: 'Bedroom Linens',
+                description: 'Luxurious bedding designed for comfort and style.'
+            },
+            'garden': {
+                title: 'Outdoor Textiles',
+                description: 'Durable and stylish outdoor fabrics that withstand the elements.'
+            },
+            'kids': {
+                title: 'Nursery & Kids',
+                description: 'Gentle, safe textiles for your little ones.'
+            }
+        };
+
+        // Show categories view
+        function showCategoriesView() {
+            categoriesGrid.style.display = 'grid';
+            allProductsContainers.forEach(container => container.style.display = 'none');
             
-            let currentCategory = '';
+            // Reset header
+            headerTitle.textContent = 'Our Signature Collection';
+            headerDescription.textContent = 'Discover our exquisite range of handcrafted textiles, where timeless tradition meets contemporary design. Each piece is carefully crafted using sustainable materials and artisanal techniques.';
             
-            const productTitles = {
-                'table-cloth': 'Table Cloth',
-                'oven-mitten': 'Oven Mitt',
-                'pot-holder': 'Pot Holder',
-                'place-mat': 'Place Mat',
-                'table-runner': 'Table Runner',
-                'chair-pad': 'Chair Pad',
-                'napkin': 'Napkin Set',
-                'kitchen-towels': 'Kitchen Towels',
-                'cotton-bags': 'Cotton Bags',
-                'cotton-pouch': 'Storage Pouch',
-                'apron': 'Chef\'s Apron',
-                'duvet': 'Duvet Cover',
-                'comforter': 'Comforter',
-                'sheet-sets': 'Sheet Sets',
-                'pillow-case': 'Pillow Case',
-                'pouf': 'Outdoor Pouf',
-                'cushions': 'Outdoor Cushions',
-                'sleepin-bag': 'Sleeping Bag',
-                'swaddle': 'Swaddle Blanket',
-                'blanket': 'Nursery Blanket',
-                'bibs': 'Bibs Set',
-                'cribsheet': 'Crib Sheet',
-                'hooded-towel': 'Hooded Towel',
-                'wash-cloth': 'Wash Cloth Set'
-            };
-
-            const categoryData = {
-                
-                'dining': {
-                    title: 'Dining Essentials',
-                    description: 'Transform your dining experience with our artisanal table linens.'
-                },
-                'kitchen': {
-                    title: 'Kitchen Textiles',
-                    description: 'Practical yet beautiful kitchen essentials made from natural materials.'
-                },
-                'bedding': {
-                    title: 'Bedroom Linens',
-                    description: 'Luxurious bedding designed for comfort and style.'
-                },
-                'garden': {
-                    title: 'Outdoor Textiles',
-                    description: 'Durable and stylish outdoor fabrics that withstand the elements.'
-                },
-                'kids': {
-                    title: 'Nursery & Kids',
-                    description: 'Gentle, safe textiles for your little ones.'
-                }
-            };
-
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('touchstart', function() {
-                    document.querySelectorAll('.category-card').forEach(c => {
-                        c.classList.remove('touched');
-                    });
-                    this.classList.add('touched');
-                });
-                
-                document.addEventListener('touchstart', function(e) {
-                    if (!card.contains(e.target)) {
-                        card.classList.remove('touched');
-                    }
-                });
-            });
+            // Hide back buttons
+            backToCategories.style.display = 'none';
+            backToProducts.style.display = 'none';
             
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('mouseleave', function() {
-                    this.classList.remove('touched');
-                });
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    currentCategory = this.getAttribute('data-category');
-                    
-                    categoriesGrid.style.display = 'none';
-                    allProductsContainers.forEach(container => container.style.display = 'none');
-                    document.getElementById(currentCategory + 'Products').style.display = 'block';
-                    
-                    headerTitle.textContent = categoryData[currentCategory].title;
-                    headerDescription.textContent = categoryData[currentCategory].description;
-                    
-                    backToCategories.style.display = 'block';
-                    backToProducts.style.display = 'none';
-                    productDetail.style.display = 'none';
-                    modal.style.display = 'none';
-                    
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
+        // Show products view for a category
+        function showProductsView(category) {
+            currentCategory = category;
+            categoriesGrid.style.display = 'none';
+            allProductsContainers.forEach(container => container.style.display = 'none');
+            document.getElementById(category + 'Products').style.display = 'block';
+            
+            // Update header
+            headerTitle.textContent = categoryData[category].title;
+            headerDescription.textContent = categoryData[category].description;
+            
+            // Show back to categories button
+            backToCategories.style.display = 'block';
+            backToProducts.style.display = 'none';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (e.target.classList.contains('product-image') || 
-                        e.target.closest('.product-image')) {
-                        return;
-                    }
-                    
-                    const productId = this.getAttribute('data-product');
-                    
-                    categoriesGrid.style.display = 'none';
-                    allProductsContainers.forEach(container => container.style.display = 'none');
-                    productDetail.style.display = 'block';
-                    
-                    headerTitle.style.display = 'none';
-                    headerDescription.style.display = 'none';
-                    
-                    detailTitle.textContent = productTitles[productId] || 'Product Details';
-                    detailTitle.classList.add('with-line');
-                    
-                    const detailImages = document.getElementById('detailImages');
-                    const imageUrl = this.querySelector('.product-image').style.backgroundImage.match(/url\(["']?([^"']*)["']?\)/)[1];
-                    detailImages.innerHTML = `<div class="detail-image" style="background-image: url('${imageUrl}')"></div>`;
-                    
-                    backToCategories.style.display = 'none';
-                    backToProducts.style.display = 'block';
-                    
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
+        // Initialize the page
+        showCategoriesView();
 
-            backToCategories.addEventListener('click', function() {
-                categoriesGrid.style.display = 'grid';
-                allProductsContainers.forEach(container => container.style.display = 'none');
-                productDetail.style.display = 'none';
-                modal.style.display = 'none';
-                
-                headerTitle.style.display = 'inline-block';
-                headerDescription.style.display = 'block';
-                
-                headerTitle.textContent = 'Our Signature Collection';
-                headerDescription.textContent = 'Discover our exquisite range of handcrafted textiles, where timeless tradition meets contemporary design. Each piece is carefully crafted using sustainable materials and artisanal techniques.';
-                
-                headerTitle.classList.remove('with-line');
-                headerTitle.style.padding = '0 40px';
-                
-                backToCategories.style.display = 'none';
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Category card click handlers
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                showProductsView(category);
             });
+        });
 
-            backToProducts.addEventListener('click', function() {
-                categoriesGrid.style.display = 'none';
-                allProductsContainers.forEach(container => container.style.display = 'none');
-                document.getElementById(currentCategory + 'Products').style.display = 'block';
-                productDetail.style.display = 'none';
-                modal.style.display = 'none';
-                
-                headerTitle.style.display = 'inline-block';
-                headerDescription.style.display = 'block';
-                
-                headerTitle.textContent = categoryData[currentCategory].title;
-                headerDescription.textContent = categoryData[currentCategory].description;
-                
-                headerTitle.classList.remove('with-line');
-                headerTitle.style.padding = '0 40px';
-                
-                backToCategories.style.display = 'block';
-                backToProducts.style.display = 'none';
-                
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+        // Back to categories button
+        backToCategories.addEventListener('click', function() {
+            showCategoriesView();
+        });
 
-            document.addEventListener('click', function(e) {
+        // Back to products button
+        backToProducts.addEventListener('click', function() {
+            showProductsView(currentCategory);
+        });
+
+        // Product card click handlers
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
                 if (e.target.classList.contains('product-image') || 
                     e.target.closest('.product-image')) {
-                    
-                    const clickedImage = e.target.classList.contains('product-image') ? 
-                        e.target : e.target.closest('.product-image');
-                    
-                    const bgImage = clickedImage.style.backgroundImage;
-                    const imageUrlMatch = bgImage.match(/url\(["']?([^"']*)["']?\)/);
-                    const imageUrl = imageUrlMatch ? imageUrlMatch[1] : '';
-                    
-                    if (imageUrl) {
-                        modalImg.src = imageUrl;
-                        modal.style.display = 'block';
-                    } else {
-                        console.error('No valid image URL found in background-image:', bgImage);
-                    }
+                    return;
                 }
+                
+                const productId = this.getAttribute('data-product');
+                
+                categoriesGrid.style.display = 'none';
+                allProductsContainers.forEach(container => container.style.display = 'none');
+                
+                // Hide header text
+                headerTitle.style.display = 'none';
+                headerDescription.style.display = 'none';
+                
+                // Show back to products button
+                backToCategories.style.display = 'none';
+                backToProducts.style.display = 'block';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
-            closeModal.onclick = function() {
-                modal.style.display = 'none';
-            };
-
-            window.onclick = function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            };
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                }
-            });
-
-            function handleResponsiveBackButtons() {
-                if (window.innerWidth <= 768) {
-                    backToCategories.style.position = 'relative';
-                    backToCategories.style.display = backToCategories.style.display === 'block' ? 'block' : 'none';
-                    backToCategories.style.margin = '10px auto';
-                    backToCategories.style.top = 'auto';
-                    backToCategories.style.left = 'auto';
-                    backToCategories.style.transform = 'none';
-                    
-                    backToProducts.style.position = 'relative';
-                    backToProducts.style.display = backToProducts.style.display === 'block' ? 'block' : 'none';
-                    backToProducts.style.margin = '10px auto';
-                    backToProducts.style.top = 'auto';
-                    backToProducts.style.left = 'auto';
-                    backToProducts.style.transform = 'none';
-                } else {
-                    backToCategories.style.position = 'absolute';
-                    backToCategories.style.display = backToCategories.style.display === 'block' ? 'block' : 'none';
-                    backToCategories.style.margin = '0';
-                    backToCategories.style.top = '50%';
-                    backToCategories.style.left = '0';
-                    backToCategories.style.transform = 'translateY(-50%)';
-                    
-                    backToProducts.style.position = 'absolute';
-                    backToProducts.style.display = backToProducts.style.display === 'block' ? 'block' : 'none';
-                    backToProducts.style.margin = '0';
-                    backToProducts.style.top = '50%';
-                    backToProducts.style.left = '0';
-                    backToProducts.style.transform = 'translateY(-50%)';
-                }
-            }
-
-            handleResponsiveBackButtons();
-            window.addEventListener('resize', handleResponsiveBackButtons);
         });
-    </script>
+
+        // Responsive back buttons
+        function handleResponsiveBackButtons() {
+            if (window.innerWidth <= 768) {
+                backToCategories.style.position = 'relative';
+                backToCategories.style.margin = '10px auto';
+                backToCategories.style.top = 'auto';
+                backToCategories.style.left = 'auto';
+                backToCategories.style.transform = 'none';
+                
+                backToProducts.style.position = 'relative';
+                backToProducts.style.margin = '10px auto';
+                backToProducts.style.top = 'auto';
+                backToProducts.style.left = 'auto';
+                backToProducts.style.transform = 'none';
+            } else {
+                backToCategories.style.position = 'absolute';
+                backToCategories.style.margin = '0';
+                backToCategories.style.top = '50%';
+                backToCategories.style.left = '0';
+                backToCategories.style.transform = 'translateY(-50%)';
+                
+                backToProducts.style.position = 'absolute';
+                backToProducts.style.margin = '0';
+                backToProducts.style.top = '50%';
+                backToProducts.style.left = '0';
+                backToProducts.style.transform = 'translateY(-50%)';
+            }
+        }
+
+        handleResponsiveBackButtons();
+        window.addEventListener('resize', handleResponsiveBackButtons);
+    });
+</script>
 </body>
 </html>
