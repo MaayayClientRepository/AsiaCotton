@@ -57,10 +57,10 @@
             align-items: center;
             flex-wrap: wrap;
             padding: 1rem 2rem;
-            background: white; /* White background */
+            background: white;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links {
@@ -70,7 +70,7 @@
         }
 
         nav a {
-            color: #2d3946; /* Dark text for contrast */
+            color: #2d3946;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
@@ -107,29 +107,30 @@
             height: 120px;
             width: auto;
             margin-right: 2rem;
-             transition: all 0.3s ease;
+            transition: all 0.3s ease;
         }
-         /* Responsive adjustments */
-    @media (max-width: 992px) {
-        .logo {
-            height: 100px;
-            margin-right: 2rem;
+        
+        @media (max-width: 992px) {
+            .logo {
+                height: 100px;
+                margin-right: 2rem;
+            }
         }
-    }
 
-    @media (max-width: 768px) {
-        .logo {
-            height: 90px;
-            margin-right: 0;
-            margin-bottom: 1rem;
+        @media (max-width: 768px) {
+            .logo {
+                height: 90px;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
         }
-    }
 
-    @media (max-width: 576px) {
-        .logo {
-            height: 80px;
+        @media (max-width: 576px) {
+            .logo {
+                height: 80px;
+            }
         }
-    }
+        
         /* ======= Header Slideshow ======= */
         .header-container {
             position: relative;
@@ -154,10 +155,9 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: fade 30s infinite; /* Increased duration for 6 slides */
+            animation: fade 30s infinite;
         }
 
-        /* Updated animation delays for 6 slides */
         .slide:nth-child(1) { animation-delay: 0s; opacity: 1; }
         .slide:nth-child(2) { animation-delay: 5s; }
         .slide:nth-child(3) { animation-delay: 10s; }
@@ -167,8 +167,8 @@
 
         @keyframes fade {
             0% { opacity: 0; }
-            3.33% { opacity: 1; } /* Adjusted timing for 6 slides */
-            16.67% { opacity: 1; } /* Each image stays visible for ~5 seconds */
+            3.33% { opacity: 1; }
+            16.67% { opacity: 1; }
             20% { opacity: 0; }
             100% { opacity: 0; }
         }
@@ -221,7 +221,6 @@
         /* Company Highlights Section */
         .highlights {
             padding: var(--space-xl) 5% 0;
-         
         }
         
         .section-title {
@@ -332,65 +331,93 @@
         
         /* Stats Section */
         .stats {
-            background-color:#44535e;
+            background-color: #44535e;
             color: white;
             padding: var(--space-xl) 5%;
             text-align: center;
-            margin-top: var(--space-xl); /* Added space between highlights and stats */
+            margin-top: var(--space-xl);
         }
-        
+
         .stats-container {
-            max-width: 1000px; /* Reduced width */
+            max-width: 1000px;
             margin: 0 auto;
         }
-        .section-title {
-             color: white;
-             text-align: center;
-        }
-        .statsection-title h2 {
-            color: white;
+
+        .stats-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: var(--space-sm);
+            margin-bottom: var(--space-xl);
         }
 
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-lg);
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
         }
-        
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            padding: var(--space-md);
+        }
+
+        .stat-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-circle {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
         .stat-item h3 {
-            font-size: 3rem;
-            margin-bottom: var(--space-sm);
+            font-size: 3.5rem;
+            margin: 0;
             font-weight: 700;
+            color: white;
         }
-        
-        
+
         .stat-item p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            margin: 0;
         }
         
         /* Contact CTA Section */
-      .contact-cta {
-    position: relative; /* Required for pseudo-element positioning */
-    padding: var(--space-xl) 5%;
-    text-align: center;
-    color: #fff; /* Ensure text is readable (adjust if needed) */
-    z-index: 1; /* Ensures text stays above the overlay */
-}
+        .contact-cta {
+            position: relative;
+            padding: var(--space-xl) 5%;
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
 
-.contact-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        url('product-Imgaes/Swaddle\ 6.jpg') 
-        center / cover no-repeat;
-    opacity: 0.2; /* Adjust transparency (0.5 = 50%) */
-    z-index: -1; /* Places the image behind the content */
-}
+        .contact-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('product-Imgaes/Swaddle\ 6.jpg') 
+                center / cover no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
         
         .cta-content {
             max-width: 800px;
@@ -434,74 +461,70 @@
             color: var(--accent);
         }
         
-        /* Footer - Made more compact */
-     /* Footer */
-footer {
-    background-color: #425260;
-    color: white;
-    padding: var(--space-md) 5%;
-    text-align: center; /* Keep overall footer centered */
-}
+        /* Footer */
+        footer {
+            background-color: #425260;
+            color: white;
+            padding: var(--space-md) 5%;
+            text-align: center;
+        }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
-    text-align: center; /* Default center alignment */
-}
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            text-align: center;
+        }
 
-/* First column (address) specific styles */
-.footer-column:first-child {
-    text-align: left; /* Left align only the first column */
-    align-items: flex-start; /* Align items to the start (left) */
-}
+        .footer-column:first-child {
+            text-align: left;
+            align-items: flex-start;
+        }
 
-.footer-column:first-child h3::after {
-    left: 0; /* Underline starts from left */
-    transform: none; /* Remove centering transform */
-}
+        .footer-column:first-child h3::after {
+            left: 0;
+            transform: none;
+        }
 
-/* General column styles */
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center other columns */
-    gap: var(--space-xs);
-}
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+        }
 
-.footer-column h3 {
-    font-size: 1.2rem;
-    margin-bottom: var(--space-sm);
-    position: relative;
-    padding-bottom: var(--space-xs);
-    text-align: inherit; /* Inherits from parent */
-}
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-sm);
+            position: relative;
+            padding-bottom: var(--space-xs);
+            text-align: inherit;
+        }
 
-.footer-column h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background-color: var(--accent);
-}
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
 
-.footer-column p, .footer-column a {
-    color: var(--light-gray);
-    line-height: 1.6;
-    font-size: 0.9rem;
-    text-align: inherit; /* Inherits from parent */
-}
+        .footer-column p, .footer-column a {
+            color: var(--light-gray);
+            line-height: 1.6;
+            font-size: 0.9rem;
+            text-align: inherit;
+        }
 
-/* Add some padding between lines in the address */
-.footer-column:first-child p {
-    padding: 0.1rem 0;
-    text-align: left; /* Ensure text alignment is left */
-}
+        .footer-column:first-child p {
+            padding: 0.1rem 0;
+            text-align: left;
+        }
         
         .footer-column a {
             text-decoration: none;
@@ -528,7 +551,11 @@ footer {
             }
             
             .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+            
+            .stat-item {
+                min-width: 250px;
             }
             
             .contact-cta h2 {
@@ -567,8 +594,21 @@ footer {
                 font-size: 1rem;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .stat-item {
+                min-width: 200px;
+            }
+            
+            .stat-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .stat-item h3 {
+                font-size: 3rem;
+            }
+            
+            .stat-item p {
+                font-size: 1.1rem;
             }
             
             .contact-cta h2 {
@@ -606,6 +646,20 @@ footer {
             .text-container {
                 padding: 2rem 1rem;
             }
+            
+            .stat-item {
+                min-width: 150px;
+                padding: var(--space-sm);
+            }
+            
+            .stat-circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -630,12 +684,10 @@ footer {
                 <div class="slide" style="background-image: url('product-Imgaes/Table\ Runner\ 2.jpg');"></div>
                 <div class="slide" style="background-image: url('product-Imgaes/Table\ Coth\ 2.jpg');"></div>
                 <div class="slide" style="background-image: url('product-Imgaes/Swaddle\ 6.jpg');"></div>
-                <!-- Added two more slides -->
                 <div class="slide" style="background-image: url('product-Imgaes/Bedding\ 6.jpg');"></div>
                 <div class="slide" style="background-image: url('product-Imgaes/Bedding\ 1.jpg');"></div>
             </div>
         </div>
-
 
         <!-- Company Highlights -->
         <section class="highlights">
@@ -672,17 +724,22 @@ footer {
         <!-- Stats Section -->
         <section class="stats">
             <div class="stats-container">
-                <div class="statsection-title">
+                <div class="section-title">
                     <h2>Our Textile Journey in Numbers</h2>
+                    <p class="stats-subtitle">Quality and excellence measured through decades of dedication</p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3>25+</h3>
+                        <div class="stat-circle">
+                            <h3>25+</h3>
+                        </div>
                         <p>Years of Excellence</p>
                     </div>
                     
                     <div class="stat-item">
-                        <h3>100K+</h3>
+                        <div class="stat-circle">
+                            <h3>100K+</h3>
+                        </div>
                         <p>Sq Ft Production Facility</p>
                     </div>
                 </div>
@@ -695,50 +752,50 @@ footer {
                 <h2>Ready to Transform Your Space?</h2>
                 <p>Seeking premium home textiles in bulk? We specialize in high-quality home products. Visit our Karur facility or contact us today for bulk orders. 
                     Let's create success together!</p>
+                <a href="contact.html" class="btn btn-accent">Contact Us</a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-   <!-- Footer -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-column">
-            <h3>Delivering Excellence Since 1997</h3>
-            <p>
-                9/236,237, NH-44,<br>
-                Kakkavadi pirivu,<br>
-                Thalapatti village,<br>
-                Karur, TamilNadu - 639003<br>
-                India
-            </p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Delivering Excellence Since 1997</h3>
+                <p>
+                    9/236,237, NH-44,<br>
+                    Kakkavadi pirivu,<br>
+                    Thalapatti village,<br>
+                    Karur, TamilNadu - 639003<br>
+                    India
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>CONTACT US</h3>
+                <p>
+                    <a href="tel:+914324235518">+91 4324 235518</a><br>
+                    <a href="mailto:info@asiacotton.in">info@asiacotton.in</a><br>
+                    Mon-Fri: 9:00 AM – 5:00 PM
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>QUICK LINKS</h3>
+                <p>
+                    <a href="about.html">About Us</a><br>
+                    <a href="products.html">Our Products</a><br>
+                    <a href="sustainability.html">Sustainability</a><br>
+                    <a href="certifications.html">Certifications</a><br>
+                    <a href="contact.html">Contact</a>
+                </p>
+            </div>
         </div>
         
-        <div class="footer-column">
-            <h3>CONTACT US</h3>
-            <p>
-                <a href="tel:+914324235518">+91 4324 235518</a><br>
-                <a href="mailto:info@asiacotton.in">info@asiacotton.in</a><br>
-                Mon-Fri: 9:00 AM – 5:00 PM
-            </p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ASIA COTTON. All Rights Reserved.</p>
         </div>
-        
-        <div class="footer-column">
-            <h3>QUICK LINKS</h3>
-            <p>
-                <a href="about.html">About Us</a><br>
-                <a href="products.html">Our Products</a><br>
-                <a href="sustainability.html">Sustainability</a><br>
-                <a href="certifications.html">Certifications</a><br>
-                <a href="contact.html">Contact</a>
-            </p>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2025 ASIA COTTON. All Rights Reserved.</p>
-    </div>
-</footer>
+    </footer>
 
     <script>
         // Set active navigation link based on current page
