@@ -8,6 +8,103 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Leads AI Widget -->
+    <script
+      src="https://api-dev-leads.winssoft.com/widget/leadsai.js"
+      data-company="asia-cotton-9bad"
+      data-key="aHR0cHM6Ly9hcGktZGV2LWxlYWRzLndpbnNzb2Z0LmNvbQ=="
+      id="leadsai-embed-script"
+      defer
+    ></script>
+    <!-- Leads AI Widget Responsiveness Override -->
+    <script>
+      (function() {
+        const targetId = 'leadsai-host';
+        const styleContent = `
+          .chat-win {
+            max-height: calc(100vh - 120px) !important;
+            height: 600px !important;
+          }
+          @media (max-width: 480px) {
+            .chat-win {
+              width: calc(100vw - 32px) !important;
+              height: calc(100vh - 110px) !important;
+              max-height: calc(100vh - 110px) !important;
+              right: -8px !important;
+            }
+          }
+          /* Force blue color across all browsers */
+          .launcher {
+            background: linear-gradient(135deg, #2952e3, #00d4f5) !important;
+          }
+          .chat-header {
+            background: linear-gradient(135deg, #2952e3, #00d4f5) !important;
+          }
+          .send-btn {
+            background: linear-gradient(135deg, #2952e3, #00d4f5) !important;
+          }
+          .msg.assistant .bubble {
+            background: #2952e3 !important;
+          }
+          .msg.user .bubble {
+            background: #00d4f5 !important;
+          }
+          .msg-av {
+            background: #2952e3 !important;
+          }
+          .msg.user .msg-av {
+            background: #00d4f5 !important;
+          }
+          .pii-btn {
+            background: linear-gradient(135deg, #2952e3, #00d4f5) !important;
+          }
+        `;
+
+        function tryInject() {
+          const host = document.getElementById(targetId);
+          if (host && host.shadowRoot) {
+            if (host.shadowRoot.getElementById('leadsai-custom-style')) return true;
+            const style = document.createElement('style');
+            style.id = 'leadsai-custom-style';
+            style.textContent = styleContent;
+            host.shadowRoot.appendChild(style);
+            return true;
+          }
+          return false;
+        }
+
+        // Run immediately
+        if (tryInject()) return;
+
+        // Fallback polling + MutationObserver to be 100% sure it catches it
+        const interval = setInterval(() => {
+          if (tryInject()) clearInterval(interval);
+        }, 100);
+
+        const observer = new MutationObserver(() => {
+          if (tryInject()) {
+            observer.disconnect();
+            clearInterval(interval);
+          }
+        });
+
+        function startObserver() {
+          observer.observe(document.body, { childList: true, subtree: true });
+        }
+
+        if (document.body) {
+          startObserver();
+        } else {
+          document.addEventListener('DOMContentLoaded', startObserver);
+        }
+
+        // Clean up after 15 seconds to prevent memory leaks
+        setTimeout(() => {
+          clearInterval(interval);
+          observer.disconnect();
+        }, 15000);
+      })();
+    </script>
     <script type="module" crossorigin src="./assets/index-CcqpH12W.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-Dnk37tRj.css">
   </head>
